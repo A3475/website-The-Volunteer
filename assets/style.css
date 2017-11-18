@@ -1,0 +1,6 @@
+.navbar {
+  background-color: #000;
+}
+.navbar-nav li a, .navbar-nav li a:focus, .navbar-nav li a:visited {
+  color: #FFF;
+}

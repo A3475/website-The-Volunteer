@@ -70,23 +70,47 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
           if ($_POST["n"]==''){
-           echo "<p class=\"text-danger\">";
-           echo "用户名没有填写";
-           echo "</p>";
+            echo "<p class=\"text-danger\">";
+            echo "用户名没有填写";
+            echo "</p>";
           }else
           if ($_POST['p']==''){
+            echo "<p class=\"text-danger\">";
+            echo "密码没有填写";
+            echo "</p>";
+          }else
+          if (!preg_match("/[^\d-., ]/",$_POST["n"])){
+            require_once './do.php';
+            $db = new DBConnection();
+            $con = $db->connect();
+            if ($db->isStore($_POST["n"],$con)){
+			  if ($db->check($_POST["n"],$_POST["p"],$con)){
+				$db->setCookies($db->getToken($_POST["n"],$con));
+				header("Location: http://47.104.0.124/vol/person.php");
+				exit;
+			  }else{
+				echo "<p class=\"text-danger\">";
+				echo "用户名或密码错误。";
+				echo "</p>";
+			  }
+            }else
+            if (!$db->isInQueue($_POST["n"],$con)){
+              echo "<p class=\"text-danger\">";
+              echo "本用户没有注册!";
+              echo "</p>";
+            }else{
+              echo "<p class=\"text-danger\">";
+              echo "此用户正在验证中,请稍候。";
+              echo "</p>";
+            }
+          }else
+          {
            echo "<p class=\"text-danger\">";
-           echo "密码没有填写";
+           echo "用户名只允许数字!";
            echo "</p>";
-          }else{
-           echo "<p class=\"text-success\">";
-           echo "5秒后自动跳转至个人信息页面...";
-           echo "</p>";
-           header("refresh:5;url=http://47.104.0.124/vol/login.php");
           }
         }
         ?>
-        </p>
         </div>
       </div>
     </div>
@@ -97,7 +121,7 @@
         Made by z3475
         Use Bootstrap
         <p>
-          本项目前端和后端代码开源托管在Github
+          本项目前端和后端代码开源托管在<a herf="https://github.com/A3475/website-The-Volunteer">Github</a>
         </p>
       </small>
   </footer>

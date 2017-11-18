@@ -40,21 +40,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <h1>The volunteer
-            <small>一个成绩查询项目</small></h1>
+          <h1>Your Account</h1>
           <p>
-            本网站搭建于周南创客协会服务器，用户可通过简单的操作提交自己的智学网账号以及密码来查看其他已注册账户的成绩，在注册的同时，如果您的账号和密码正确，您的账号和密码会被加密保存在本网站数据库中，当一场新考试考完后，网站会自动刷新所有注册账户的成绩。</p>
-          <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary" onclick="{location.href='reg.php'}">现在开始</button>
-            <button type="button" class="btn btn-default" onclick="{location.href='login.php'}">已有账号?</button>
-          </div>
+            2333</p>
         </div>
         <div class="col-md-3">
-          <img src="g.jpg" class="img-circle" alt="Responsive image">
+          <img src="none.jpg" class="img-circle" alt="Responsive image">
           <h5>
-            <small>由z3475制作</small></h5>
-          <h5>
-            <small>隶属于周南创客协会项目</small></h5>
+            <small>Your Account</small></h5>
         </div>
       </div>
     </div>
